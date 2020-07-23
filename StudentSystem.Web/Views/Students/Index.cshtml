@@ -4,51 +4,38 @@
     ViewBag.Title = "Index";
 }
 
-    <table class="table">
+
+<br />
+
+<table class="table table-bordred table-striped">
+    <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Field.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Governorate.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Neighborhood.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th></th>
+            <th scope="col">Name</th>
+            <th scope="col">Birthdate</th>
+            <th scope="col">Governorate</th>
+            <th scope="col">Neighborhood</th>
+            <th scope="col">Field</th>
+            <th scope="col">Action</th>
         </tr>
+    </thead>
+    <tbody>
 
-        @foreach (var item in Model)
+        @foreach (var student in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Field.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Governorate.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Neighborhood.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BirthDate)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-            </tr>
+        <tr>
+            <td>@Html.DisplayFor(std => student.Name)</td>
+            <td>@Html.DisplayFor(std => student.BirthDate)</td>
+            <td>@Html.DisplayFor(std => student.Governorate.Name)</td>
+            <td>@Html.DisplayFor(std => student.Neighborhood.Name)</td>
+            <td>@Html.DisplayFor(std => student.Field.Name)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = student.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = student.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = student.ID })
+            </td>
+        </tr>
         }
+    </tbody>
+</table>
 
-    </table>
 
