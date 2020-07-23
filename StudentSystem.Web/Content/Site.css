@@ -1,6 +1,11 @@
-﻿body {
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
     padding-top: 0;
-    padding-bottom: 20px;
+    margin-bottom: 90px;
 }
 
  /*Set padding to keep content from hitting the edges */
@@ -30,4 +35,11 @@ textarea {
 
 .bg-black{
     background-color: #000000;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
 }

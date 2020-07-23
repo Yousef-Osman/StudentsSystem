@@ -69,7 +69,7 @@ namespace StudentSystem.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _studentData.AddStudent(student);
+                _studentData.EditStudent(student);
                 return RedirectToAction(nameof(Index));
             }
 
