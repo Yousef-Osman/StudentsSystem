@@ -25,7 +25,13 @@ namespace StudentsSystem.Data.Services
 
         public void DeleteStudent(int id)
         {
-            throw new NotImplementedException();
+            var student = _context.Students.Find(id);
+
+            if(student != null)
+            {
+                _context.Students.Remove(student);
+                _context.SaveChanges();
+            }
         }
 
         public void EditStudent(Student student)

@@ -26,8 +26,17 @@
                 <td>@Html.DisplayFor(std => student.Neighborhood.Name)</td>
                 <td>@Html.DisplayFor(std => student.Field.Name)</td>
                 <td>
-                    @Html.ActionLink("Edit", "EditStudent", new { id = student.ID }, new { @calss="btn btn-warning mr-2" })
-                    @Html.ActionLink("Delete", "DeleteStudent", new { id = student.ID }, new { @calss = "btn btn-danger" })
+                    <div class="d-flex">
+                        @Html.ActionLink("Edit", "EditStudent", "Students", new { id = student.ID }, new { @class = "btn-sm btn-warning mr-2" })
+                        @*@Ajax.ActionLink("Delete", "DeleteStudent", new { id = student.ID }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "btn-sm btn-danger" })*@
+                        @using (Html.BeginForm("DeleteStudent", "Students", new { id = student.ID }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn-sm btn-danger" />
+                            </div>
+                        }
+                    </div>
                 </td>
             </tr>
         }
@@ -35,4 +44,7 @@
 </table>
 
 @Html.ActionLink("Add Student", "AddStudent", "Students", null, new { @class = "btn btn-primary" })
+
+
+
 

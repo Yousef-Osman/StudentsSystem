@@ -18,7 +18,7 @@ namespace StudentSystem.Web.Controllers
         {
             _studentData = studentData;
         }
-        
+
         public async Task<ActionResult> Index()
         {
             var model = await _studentData.GetAllStudents();
@@ -76,33 +76,12 @@ namespace StudentSystem.Web.Controllers
             return RedirectToAction(nameof(EditStudent));
         }
 
-        //public async Task<ActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Student student = await db.Students.FindAsync(id);
-        //    if (student == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(student);
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> DeleteConfirmed(int id)
-        //{
-        //    Student student = await db.Students.FindAsync(id);
-        //    db.Students.Remove(student);
-        //    await db.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
-
-        public ActionResult NotFound(int studentId)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteStudent(int id)
         {
-            return View();
+            _studentData.DeleteStudent(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
