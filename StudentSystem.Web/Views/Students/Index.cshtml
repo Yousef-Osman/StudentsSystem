@@ -4,10 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-
-<br />
-
-<table class="table table-bordred table-striped">
+<table class="table table-bordred table-striped mt-5">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Name</th>
@@ -22,20 +19,20 @@
 
         @foreach (var student in Model)
         {
-        <tr>
-            <td>@Html.DisplayFor(std => student.Name)</td>
-            <td>@Html.DisplayFor(std => student.BirthDate)</td>
-            <td>@Html.DisplayFor(std => student.Governorate.Name)</td>
-            <td>@Html.DisplayFor(std => student.Neighborhood.Name)</td>
-            <td>@Html.DisplayFor(std => student.Field.Name)</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = student.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = student.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = student.ID })
-            </td>
-        </tr>
+            <tr>
+                <td>@Html.DisplayFor(std => student.Name)</td>
+                <td>@Html.DisplayFor(std => student.BirthDate)</td>
+                <td>@Html.DisplayFor(std => student.Governorate.Name)</td>
+                <td>@Html.DisplayFor(std => student.Neighborhood.Name)</td>
+                <td>@Html.DisplayFor(std => student.Field.Name)</td>
+                <td>
+                    @Html.ActionLink("Edit", "EditStudent", new { id = student.ID }, new { @calss="btn btn-warning mr-2" })
+                    @Html.ActionLink("Delete", "DeleteStudent", new { id = student.ID }, new { @calss = "btn btn-danger" })
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 
+@Html.ActionLink("Add Student", "AddStudent", "Students", null, new { @class = "btn btn-primary" })
 

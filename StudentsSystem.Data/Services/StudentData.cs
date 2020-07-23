@@ -17,8 +17,10 @@ namespace StudentsSystem.Data.Services
             _context = context;
         }
 
-        public void AddStudent(Student student)
+        public  void AddStudent(Student student)
         {
+            _context.Students.Add(student);
+            _context.SaveChanges();
         }
 
         public void DeleteStudent(int id)
@@ -28,7 +30,23 @@ namespace StudentsSystem.Data.Services
 
         public void EditStudent(Student student)
         {
-            throw new NotImplementedException();
+            _context.Entry(student).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public IQueryable<Field> GetAllFields()
+        {
+            return _context.Fields;
+        }
+
+        public IQueryable<Governorate> GetAllGovernorates()
+        {
+            return _context.Governorates;
+        }
+
+        public IQueryable<Neighborhood> GetAllNeighborhoods()
+        {
+            return _context.Neighborhoods;
         }
 
         public async Task<IEnumerable<Student>> GetAllStudents()
@@ -36,9 +54,9 @@ namespace StudentsSystem.Data.Services
             return (await _context.Students.Include(s => s.Field).Include(s => s.Governorate).Include(s => s.Neighborhood).ToListAsync());
         }
 
-        public Student GetStudent(int id)
+        public async Task<Student> GetStudent(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Students.FindAsync(id);
         }
     }
 }

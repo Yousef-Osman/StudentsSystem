@@ -10,9 +10,13 @@ namespace StudentsSystem.Data.Services
     public interface IStudentData
     {
         Task<IEnumerable<Student>> GetAllStudents();
-        Student GetStudent(int id);
+        IQueryable<Governorate> GetAllGovernorates();
+        IQueryable<Neighborhood> GetAllNeighborhoods();
+        IQueryable<Field> GetAllFields();
+        Task<Student> GetStudent(int id);
         void AddStudent(Student student);
         void EditStudent(Student student);
         void DeleteStudent(int id);
+
     }
 }
