@@ -22,6 +22,7 @@ namespace StudentsSystem.Data.Models
         public string Name { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
 
         public int GovernorateId { get; set; }

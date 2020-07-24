@@ -29,16 +29,18 @@
         </div>
     </nav>
 
-    <div class="container body-content pb-5">
+    <div class="">
         @RenderBody()
     </div>
 
-    <footer class="footer bg-black mt-5">
+    <footer class="footer bg-black">
         <p class="text-center text-white-50 pb-2 pt-3">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>
